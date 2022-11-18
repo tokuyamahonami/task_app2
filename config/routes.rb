@@ -7,13 +7,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  devise_scope :users do
-    get "user/:id", :to => "users/registrations#detail"
-    get "users/sign_up" => "registrations#new"
-    get "login", :to => "users/sessions#new"
-    get "logout", :to => "users/sessions#destroy"
+  devise_scope :user do
+    get '/sign_in', to: 'users/sessions#new'
   end
-  
+
+  get 'users/show'
   get 'plans', to: 'plans#index'
 
 end
