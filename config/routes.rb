@@ -5,17 +5,15 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  resources :users, only: [:show]
 
   devise_scope :users do
-    get "/sign_in" => "devise/sessions#new" # login/sign_inへのカスタムパス
-    get "/sign_up" => "devise/registrations#new", as: "new_users_registration" # sign_up/registrationへのカスタムパス
+    get "user/:id", :to => "users/registrations#detail"
+    get "users/sign_up" => "registrations#new"
+    get "login", :to => "users/sessions#new"
+    get "logout", :to => "users/sessions#destroy"
   end
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-
+  
   get 'plans', to: 'plans#index'
 
 end
