@@ -7,28 +7,71 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   </head>
 
-<header class="header">
-    <% if user_signed_in? %>
-      <div class="user_nav grid-6">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </div>
+  <header class="header">
+   <div class="header-inner">
+    <div class="header-left-nav">
+      <%= link_to image_tag('https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png', class: 'logo'), 'http://localhost:3000/' %>
+         <div class="header-sharch d-lg-inline-block d-none">
+           <%= search_form_for @q, url: search_rooms_path do |f| %>
+              <%= f.search_field :address_cont, placeholder:"エリア" %> 
+              <i class="fas fa-map-marker-alt"></i>
+           <% end %>
+         </div>
 
-    <% else %>
-    
-      <div class="grid-6">
-        <%= link_to "ログイン", new_user_session_path, class: 'user' %>
-        <%= link_to "新規登録", new_user_registration_path, class: 'user' %>
-      </div>
+         <div class="header-sharch d-lg-inline-block d-none">
+           <%= search_form_for @q, url: search_rooms_path do |f| %>
+              <%= f.search_field :name_or_introduction_or_address_cont, placeholder:"キーワード" %> 
+              <i class="fas fa-search"></i>
+           <% end %>
+         </div>
+     </div>
 
-    <% end %>
-
+     <div class="header-rignt-nav">
+       <div class="nav-item">
+      <% if user_signed_in? %>
+        <div class="nav-item d-sm-inline-block d-none">
+         <%= current_user.name %>
+        </div>
+        <div class="nav-item">
+          <% if @user.image.attached? %>
+           <%= image_tag current_user.image_name, class: "host-icon" %>
+          <% else %>
+            <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg"  alt='アイコン画像' class="icon-image host-icon nav-trigger">
+          <% end %>
+          <ul class="header-nav-menu" >
+            <li class="menu_li"><%= link_to "ルーム登録", new_room_path %></li>
+            <li class="menu_li"><%= link_to "予約済みルーム一覧", reservations_path %></li>
+            <li class="menu_li"><%= link_to "登録済みルーム一覧",rooms_path%></li>
+            <li class="menu_li"><%= link_to "設定", users_account_path %></li>
+            <li class="menu_li"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      <% else %>
+         <%= link_to "ログイン", new_user_session_path, class: "user btn-primary my-2 mx-3 " %>
+         <%= link_to "新規登録", new_user_registration_path, class: "user btn-secondary" %>
+      <% end %>
+       </div>
+     </div>
+   </div>
+  </header>
 
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+
+    <footer class="footer">
+       <p>© 2020 POTEPAN.INC.</p>
+    </footer>
+
+
   </body>
 </html>
