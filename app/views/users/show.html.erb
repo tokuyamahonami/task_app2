@@ -1,3 +1,65 @@
-<h1>Users#show</h1>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
+<div class="container-fiuld user">
+  <div class="row">
+    <div class="col-lg-2 user-nav user-nav-pc d-lg-block d-none">
+      <ul>
+        <li class="active">
+          <%= link_to "アカウント",users_account_path %>
+        </li>
+
+        <li class="">
+          <%= link_to "プロフィール",edit_user_path(current_user.id) %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-2 user-nav user-nav-mobile d-lg-none">
+      <ul>
+        <li class="active">
+          <%= link_to "アカウント",users_account_path %>
+        </li>
+
+        <li class="">
+          <%= link_to "プロフィール",edit_user_path(current_user.id) %>
+        </li>        
+      </ul>
+    </div>
+
+    <div class="col-md-10 user-view">
+      <div class="user-view-box">
+        <div class="update-content">
+          <div class="row">
+            <h5>アカウント</h5>
+          </div>
+        </div>
+        
+        <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+
+        <div class="update-content">
+          <div class="row">
+            <%= f.label :メールアドレス,class:"col-md-3" %><br />
+            <div class="col-md-9"><%= @user.email %></div>
+          </div>
+        </div>
+
+        <div class="update-content">
+          <div class="row">
+            <%= f.label :パスワード,class:"col-md-3" %><br />
+            <div class="col-md-9">********</div>
+          </div>
+        </div>
+
+        <div class="update-content">
+          <div class="row">
+            <%= link_to "編集", edit_user_registration_path,class:"col-md-2 btn btn-primary mx-3"%>
+          </div>
+        </div>
+
+
+       <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
