@@ -18,6 +18,11 @@ Rails.application.routes.draw do
 
   end
 
+  get 'reserations/new'
+  post 'reserations/confirm'
+  post 'reserations/back'
+  post 'reserations/complete'
+
   get 'users/show'
   root 'plans#index'
 

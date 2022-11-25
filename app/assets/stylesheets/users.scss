@@ -43,3 +43,52 @@ div.field, div.actions {
     padding: 4px;
     margin: 0 5px;
 }
+
+.user {
+    width: 100px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.user .user-nav-pc {
+    height: 100vh;
+}
+
+.user .user-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 15px;
+}
+
+.user .user-nav-pc .active {
+    border-right: 3px solid #4a90e2;
+}
+
+.user .user-nav li {
+    font-size: 18px;
+    padding: 10px;
+}
+.user .user-nav-mobile {
+     height: auto;
+}
+
+.user .user-view-box {
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 30px auto;
+}
+
+.user .update-content {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+

@@ -1,0 +1,32 @@
+<div class="container-fiuld reservations">
+   <h4 class="pb-4">予約済みルーム一覧</h4>
+   <table>
+      <thead>
+         <tr algin="center">
+             <th>ルーム画像</th>
+             <th>ルーム名</th>
+             <th>ルーム紹介</th>
+             <th>合計金額</th>
+             <th>開始日</th>
+             <th>終了日</th>
+             <th>予約確定日時</th>
+         </tr>
+      </thead>
+
+      <tbody>
+         <% @reservations.each do |reservation| %>
+           
+           <tr>
+              <td><image src=" <%= reservation.room.picture %> " onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="reservations-image"></td>
+              <td class="posts-name"><%= link_to "#{reservation.room.room_name}", {controller: 'reservations', action: 'new', id: reservation.room_id} %></td>
+              <td class="posts-content"><%= reservation.room.introducution %></td>
+              <td class="prv¥ice-icon"><%= reservation.total_price %></td>
+              <td><%= reservation.start_date.strftime('%Y-%m-%d') %></td>
+              <td><%= reservation.end_date.strftime('%Y-%m-%d') %></td>
+              <td><%= reservation.created_at.strftime('%Y-%m-%d') %></td>
+           </tr>
+
+         <% end %>
+      </tbody>
+   </table>
+</div>
