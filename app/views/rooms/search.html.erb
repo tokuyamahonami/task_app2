@@ -10,5 +10,20 @@
          <th>作成日</th>
        </tr>
      </thead>
+
+     <tbody>
+       <% if @rooms.present? %>
+         <% @rooms.each do |room| %>
+           <tr>
+              <td><image src="<%= room.picture %>" onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="reservations-image"></td>
+              <td class="posts-name"><%= link_to "#{room.room_name}", {controller: 'reservations', action: 'new', id: room.id} %></td>
+              <td class="posts-content"><%= room.address %></td>
+              <td class="price-icon"><%= room.total %></td>
+           </tr>
+         <% end %>
+        <% else %>
+          <p>検索結果はありません</p>
+        <% end %>
+     </tbody>
   </table>
 </div>
