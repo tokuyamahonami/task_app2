@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms or /rooms.json
   def index
+    @user = current_user
     @rooms = Room.all
   end
 
@@ -14,6 +15,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/new
   def new
+    @user = current_user
     @room = Room.new
   end
 
@@ -23,52 +25,18 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params)
-
-    respond_to do |format|
+    @user = current_user
+    @room = Room.create(room_params)
       if @room.save
-        format.html { redirect_to room_url(@room), notice: "Room was successfully created." }
-        format.json { render :show, status: :created, location: @room }
+        redirect_to :rooms ,notice: "ルーム情報を新規登録しました"
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+        flash[:alert] = "ルーム情報を登録できませんでした"
+        render "new"
       end
-    end
   end
 
-  # PATCH/PUT /rooms/1 or /rooms/1.json
-  def update
-    respond_to do |format|
-      if @room.update(room_params)
-        format.html { redirect_to room_url(@room), notice: "Room was successfully updated." }
-        format.json { render :show, status: :ok, location: @room }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /rooms/1 or /rooms/1.json
-  def destroy
-    @room.destroy
-
-    respond_to do |format|
-      format.html { redirect_to rooms_url, notice: "Room was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
-
-  def search
-    @results = @q.result
-  end
 
   private
-
-  def set_q
-    @q = User.ransack(params[:q])
-  end
-
 
   # Use callbacks to share common setup or constraints between actions.
   def set_room
@@ -77,6 +45,6 @@ class RoomsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def room_params
-    params.require(:room).permit(:area, :keyword)
+    params.require(:room).permit(:name, :introduction, :single_rate, :address, :picture, :user_id)
   end
 end

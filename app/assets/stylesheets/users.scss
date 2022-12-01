@@ -45,18 +45,7 @@ div.field, div.actions {
 }
 
 .user {
-    width: 100px;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-.user .user-nav-pc {
-    height: 100vh;
+    width: 100%;
 }
 
 .user .user-nav {
@@ -65,8 +54,16 @@ div.field, div.actions {
     padding: 30px 15px;
 }
 
+.user .user-nav-pc {
+    height: 100vh;
+}
+
 .user .user-nav-pc .active {
     border-right: 3px solid #4a90e2;
+}
+
+.user .user-nav-pc .active a {
+    color: #4a90e2;
 }
 
 .user .user-nav li {
@@ -75,6 +72,11 @@ div.field, div.actions {
 }
 .user .user-nav-mobile {
      height: auto;
+}
+
+.user .user-view {
+    background-color: #F6F8F9;
+    border-left: 2px solid #e2e2e2;
 }
 
 .user .user-view-box {

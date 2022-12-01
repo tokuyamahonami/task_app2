@@ -2,31 +2,52 @@ class ReservationsController < ApplicationController
 
     before_action :permit_params, except: :new
 
-    def new
-		@reseration = Reseration.new
+	def index
+		@user = current_user
+		@reservation = Reservation.all
 	end
 
-    def back
-		@reseration = Reseration.new(@attr)
-		render :new
+    def new
+		@user = current_user
+		@room = Room.find(params[:id]) 
+		@reservation = Reservation.new(reservation_params)
 	end
 
     def confirm
-		@reseration = Reseration.new(@attr)
-		if @reseration.invalid?
+		@user = current_user
+		@reservation = Reservation.new
+
+		@reservation = Reservation.new(reservation_params)
+		if @reservation.invalid?
 			render :new
+		else
+			@room = @reservation.room
 		end
 	end
 
+    def create
+		@reservation = Reservation.new(reservation_params)
+		@reservation = Reservation.new(params.require(:reservation).permit(:room_id,:user_id,:start_date,:end_date,:price,:total_price,:people,:total_day))
+		if @reservation.save
+		   flash[:notice] = "予約が完了しました"
+		   redirect_to reservation_path(@reservation.id)
+		else
+		   @room = Room.find(params[:reservation][:room_id])
+		   @user = User.find(params[:reservation][:user_id])
+		   render :new
+		end
+	end
+
+
     def complete
-		Reseration.create!(@attr)
+		@user = current_user
+		@reservation = Reservation.find(params[:id])
 	end
 
     private
 
-    def permit_params
-		@attr = params.require('reseration').permit(:id, :reseration_date, :name, :note)
+	def reservation_params
+		params.require(:reservation).permit(:room_id,:user_id,:start_date,:end_date,:people)
 	end
-
 
 end

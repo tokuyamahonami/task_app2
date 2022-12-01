@@ -1,7 +1,7 @@
 <div class="container room-show">
    <div class="row">
       <div class="col-md-8">
-          <image src=" <%= @room.picture %> " onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="room-show-image">
+          <image src= "<%= @room.picture %>" onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="room-show-image">
 
           <div class="room-show-detile">
              <div class="room-show-detile-icon">
@@ -12,7 +12,7 @@
 
              <div class="room-show-profile">
                 <p class="room-show-profile-name">
-                   <%= @room.room_name %>
+                   <%= @room.name %>
                 </p>
                 <p class="room-show-profile-address">
                    <%= @room.address %>
@@ -21,31 +21,30 @@
           </div>
 
           <p class="room-show-detile-content">
-             <%= @room.introducution %>
+             <%= @room.introduction %>
           </p>
       </div>
 
       <div class="col-md-4">
           <div class="room-show-nav">
-              <%= form_with model:@reservation, url:confirm_reservations_path(@room) do |f| %>
-
-              <%= f.hidden_field :room_id, :value => @room.id %>
-              <%= f.hidden_field :user_id, :value => @user.id %>
-
-              <%= f.label:room_id, "部屋ID" %>
-              <h5 class="price-icon"><%= @room.total %> / 日</h5>
+              <%= form_with model: @reservation, url:new_reservations_path(@room) do |f| %>
+              <h5 class="price-icon">¥<%= @room.single_rate %> / 日</h5>
 
                  <div class="room-show-date-select">
-                     <%= f.label:room_id, "部屋ID" %>
-                     <p><%= @room.id %></p> <br>
-
-                     
+                    <div>                    
                      <%= f.label:start_date, "開始日" %>
                      <%= f.date_field:start_date, class:"form-control mb-4" %>
+                    </div>
+                    <div>
                      <%= f.label:end_date, "終了日" %>
                      <%= f.date_field:end_date, class:"form-control mb-4" %>
+                    </div>
+                    <div>
                      <%= f.label:people, "人数" %>
                      <%= f.number_field:people, class:"form-control mb-4" %>
+                    </div>
+                     <%= f.hidden_field :room_id, :value => @room.id %>
+                     <%= f.hidden_field :user_id, :value => @user.id %>
                      <%= f.submit "予約する", class:"form-control mb-4" %>
                  </div>
               <% end %>

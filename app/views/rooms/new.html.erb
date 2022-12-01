@@ -26,42 +26,42 @@
 
             <div class="update-content">
                <div class="row">
-                  <%= f.label :room_name,"ルーム名",class:"col-md-3 required-a" %>
-                  <%= f.text_field :room_name,placeholder:"ルーム名を入力", class:"form-control col-md-9 mb-4 field_wieth_error" %>
+                  <%= f.label :name,"ルーム名", class:"col-md-3 required-a" %>
+                  <%= f.text_field :name, placeholder:"ルーム名を入力", class:"form-control col-md-9 mb-4 field_wieth_error" %>
                </div>
             </div>
 
             <div class="update-content">
                <div class="row">
-                  <%= f.label :introducution,"ルーム紹介",class:"col-md-3 required-a" %>
-                  <%= f.text_field :introducution,placeholder:"ルーム紹介を入力", class:"form-control col-md-9 mb-4 field_wieth_error" %>
+                  <%= f.label :introduction,"ルーム紹介", class:"col-md-3 required-a" %>
+                  <%= f.text_field :introduction, placeholder:"ルーム紹介を入力", class:"form-control col-md-9 mb-4 field_wieth_error" %>
                </div>
             </div>
 
             <div class="update-content">
                <div class="row">
-                  <%= f.label :total,"料金",class:"col-md-3 required-a" %>
-                  <%= f.number_field :total,placeholder:"一日あたりの料金を入力", class:"form-control mb-4 col-md-9 field_wieth_error" %>
+                  <%= f.label :single_rate,"料金", class:"col-md-3 required-a" %>
+                  <%= f.number_field :single_rate, placeholder:"一日あたりの料金を入力", class:"form-control mb-4 col-md-9 field_wieth_error" %>
                </div>
             </div>
 
             <div class="update-content">
                <div class="row">
-                  <%= f.label :address,"住所",class:"col-md-3 required-a" %>
+                  <%= f.label :address,"住所", class:"col-md-3 required-a" %>
                   <%= f.text_field :address,placeholder:"住所を入力", class:"form-control mb-4 col-md-9 field_wieth_error" %>
                </div>
             </div>
 
             <div class="update-content">
                <div class="row">
-                  <%= f.label :photo,"ルーム画像",class:"col-md-3 required-a" %>
+                  <%= f.label :photo,"ルーム画像", class:"col-md-3 required-a" %>
                   <%= f.file_field :photo, class:"mb-4 col-md-9 field_wieth_error" %>
                </div>
             </div>
 
             <div class="update-content">
                <div class="row">
-                  <%= f.submit "登録" ,class:"col-md-2 btn btn-primary mx-3"%>
+                  <%= f.submit "登録" , class:"col-md-2 btn btn-primary mx-3"%>
                </div>
             </div>
 

@@ -8,20 +8,24 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :rooms do
+  resources :rooms, only: [:index, :new, :create] do
     collection do
       get 'search'
     end
   end
 
+  resources :reservations, only: [:new, :confirm, :complete, :show, :create] 
+
+
   devise_scope :user do
 
   end
+  
 
-  get 'reserations/new'
-  post 'reserations/confirm'
-  post 'reserations/back'
-  post 'reserations/complete'
+  #get 'reservations/new'
+  #post 'reservations/confirm'
+  #post 'reservations/back'
+  #post 'reservations/complete'
 
   get 'users/show'
   root 'plans#index'

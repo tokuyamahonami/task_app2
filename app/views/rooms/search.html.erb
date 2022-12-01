@@ -16,9 +16,9 @@
          <% @rooms.each do |room| %>
            <tr>
               <td><image src="<%= room.picture %>" onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="reservations-image"></td>
-              <td class="posts-name"><%= link_to "#{room.room_name}", {controller: 'reservations', action: 'new', id: room.id} %></td>
+              <td class="posts-name"><%= link_to room.name, {controller: 'reservations', action: 'new', id: room.id} %></td>
               <td class="posts-content"><%= room.address %></td>
-              <td class="price-icon"><%= room.total %></td>
+              <td class="price-icon"><%= room.single_rate %></td>
            </tr>
          <% end %>
         <% else %>
