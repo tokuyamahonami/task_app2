@@ -18,7 +18,7 @@
            
            <tr>
               <td><image src=" <%= reservation.room.picture %> " onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="reservations-image"></td>
-              <td class="posts-name"><%= link_to "#{reservation.room.room_name}", {controller: 'reservations', action: 'new', id: reservation.room_id} %></td>
+              <td class="posts-name"><%= link_to "#{reservation.room.name}" %></td>
               <td class="posts-content"><%= reservation.room.introducution %></td>
               <td class="prv¥ice-icon"><%= reservation.total_price %></td>
               <td><%= reservation.start_date.strftime('%Y-%m-%d') %></td>

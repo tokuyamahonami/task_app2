@@ -4,7 +4,7 @@
       <div class="reservations-new-nav">
          <h4 class="reservations-new-check-content">予約内容確認</h4>
 
-            <%= form_with model: @reservation do |f| %>
+            <%= form_with model: reservation, url:reservations_path, local: true  do |f| %>
 
                 <%= f.hidden_field :people %>
                 <%= f.hidden_field :room_id %>

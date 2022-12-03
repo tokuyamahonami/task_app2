@@ -87,14 +87,14 @@ table {
     width: 100%;
 }
 
-.room-new .room-nav-pc {
-    height: 100vh;
-}
-
 .room-new .room-nav {
     width: 100%;
     box-sizing: border-box;
     padding: 30px 15px;
+}
+
+.room-new .room-nav-pc {
+    height: 100vh;
 }
 
 .room-new .room-nav-pc .active {

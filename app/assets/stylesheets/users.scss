@@ -48,37 +48,6 @@ div.field, div.actions {
     width: 100%;
 }
 
-.user .user-nav {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 30px 15px;
-}
-
-.user .user-nav-pc {
-    height: 100vh;
-}
-
-.user .user-nav-pc .active {
-    border-right: 3px solid #4a90e2;
-}
-
-.user .user-nav-pc .active a {
-    color: #4a90e2;
-}
-
-.user .user-nav li {
-    font-size: 18px;
-    padding: 10px;
-}
-.user .user-nav-mobile {
-     height: auto;
-}
-
-.user .user-view {
-    background-color: #F6F8F9;
-    border-left: 2px solid #e2e2e2;
-}
-
 .user .user-view-box {
     max-width: 880px;
     background-color: #fff;

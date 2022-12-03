@@ -4,14 +4,14 @@ class ReservationsController < ApplicationController
 
 	def index
 		@user = current_user
-		@reservation = Reservation.all
+		@reservations = Reservation.all
 	end
 
-    def new
-		@user = current_user
-		@room = Room.find(params[:id]) 
-		@reservation = Reservation.new(reservation_params)
-	end
+    #def new
+		#@user = current_user
+		#@room = Room.find(params[:id]) 
+		#@reservation = Reservation.new(reservation_params)
+	#end
 
     def confirm
 		@user = current_user
@@ -26,7 +26,6 @@ class ReservationsController < ApplicationController
 	end
 
     def create
-		@reservation = Reservation.new(reservation_params)
 		@reservation = Reservation.new(params.require(:reservation).permit(:room_id,:user_id,:start_date,:end_date,:price,:total_price,:people,:total_day))
 		if @reservation.save
 		   flash[:notice] = "予約が完了しました"
@@ -41,8 +40,14 @@ class ReservationsController < ApplicationController
 
     def complete
 		@user = current_user
-		@reservation = Reservation.find(params[:id])
+		@reservation = Reservation.new(reservation_params)
 	end
+
+	def show
+		@reservation = Reservation.find(params[:id])
+		@room = Room.find(@reservation.room_id)
+	end
+
 
     private
 

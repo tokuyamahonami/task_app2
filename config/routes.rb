@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :rooms
+  resources :rooms do
+    collection do
+      get 'search'
+    end
+  end
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
@@ -8,13 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :rooms, only: [:index, :new, :create] do
-    collection do
-      get 'search'
-    end
-  end
-
-  resources :reservations, only: [:new, :confirm, :complete, :show, :create] 
+  #resources :reservations, only: [:show, :confirm, :complete]
 
 
   devise_scope :user do
@@ -22,10 +21,10 @@ Rails.application.routes.draw do
   end
   
 
-  #get 'reservations/new'
-  #post 'reservations/confirm'
+  get 'reservations/show'
+  post 'reservations/confirm'
   #post 'reservations/back'
-  #post 'reservations/complete'
+  post 'reservations/complete'
 
   get 'users/show'
   root 'plans#index'
