@@ -9,8 +9,8 @@ class ReservationsController < ApplicationController
 
     def confirm
 		binding.pry
-		@reservation = Reservation.new
-		@room = Room.find(params[:id])
+		@reservation = Reservation.new(params.permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day))
+		@room = Room.find(params[:room_id])
 		@user = current_user
 		binding.pry
 	end
@@ -41,6 +41,7 @@ class ReservationsController < ApplicationController
     private
 
 	def reservation_params
+		#binding.pry
 		params.require(:reservation).permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day)
 	end
 

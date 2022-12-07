@@ -4,10 +4,7 @@
       <div class="reservations-new-nav">
          <h4 class="reservations-new-check-content">予約内容確認</h4>
 
-            <%= form_with model: @reservation, url: reservations_confirm_path, local: true do |f| %>
-
-                <%= f.hidden_field :room_id, :value => room_id %>
-                <%= f.hidden_field :user_id, :value => user_id %>
+            <%= form_with model: @reservation, url: reservations_complete_path, local: true do |f| %>
 
                 <h5 class="price-icon"><%= @room.single_rate %> /日 </h5>
 
@@ -33,6 +30,8 @@
 
                     <p class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</p>
 
+                    <%= f.hidden_field :room_id, :value => @room_id %>
+                    <%= f.hidden_field :user_id, :value => user_id %>
                     <%= f.submit "予約を確定", class:"col-md-2 btn btn-primary my-3 form-control form-btn"%>
                     <%= link_to "ルーム詳細に戻る", :back, class:"btn btn-secondary form-control" %>
 

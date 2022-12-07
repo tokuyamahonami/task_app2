@@ -14,12 +14,6 @@
  *= require_self
  */
 
-body, p, ol, ul, td {
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-}
-
 body {
     background-color: #fff;
     color: #333;
@@ -31,6 +25,12 @@ body {
 
 ul {
     list-style: none;
+}
+
+body, p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
 }
 
 .header .nav-item {
