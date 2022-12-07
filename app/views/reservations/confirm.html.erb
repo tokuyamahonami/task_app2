@@ -4,31 +4,31 @@
       <div class="reservations-new-nav">
          <h4 class="reservations-new-check-content">予約内容確認</h4>
 
-            <%= form_with model: reservation, url:reservations_path, local: true  do |f| %>
+            <%= form_with model: @reservation, url: reservations_confirm_path, local: true do |f| %>
 
-                <%= f.hidden_field :people %>
-                <%= f.hidden_field :room_id %>
-                <%= f.hidden_field :user_id %>
+                <%= f.hidden_field :room_id, :value => room_id %>
+                <%= f.hidden_field :user_id, :value => user_id %>
 
                 <h5 class="price-icon"><%= @room.single_rate %> /日 </h5>
 
-                <div class="reservations-new-date-selsct">
+                <div class="reservations-new-date-select">
 
                     <%= f.label :start_date, "開始日" %><br>
-                    <%= f.hidden_field :start_date %>
+                    <%= f.hidden_field :start_date, :value => start_date %>
                     <%= f.text_field :start_date, class:"form-control col-md-9 mb-4", :readonly => true %>
 
                     <%= f.label :end_date, "終了日" %><br>
-                    <%= f.hidden_field :end_date %>
+                    <%= f.hidden_field :end_date, :value => end_date %>
                     <%= f.text_field :end_date, class:"form-control col-md-9 mb-4", :readonly => true %>
 
                     <h6 class="reservations-new-check-content">使用日数 : <%= @reservation.total_day %>日</h6>
-                    <%= f.hidden_field :total_day %>
+                    <%= f.hidden_field :total_day, :value => total_day %>
 
                     <h6 class="reservations-new-check-content">人数 : <%= @reservation.people %>人</h6>
+                    <%= f.hidden_field :people, :value => people %>
 
                     <%= f.label :total_price, "合計金額" %><br>
-                    <%= f.hidden_field :total_price %>
+                    <%= f.hidden_field :total_price, :value => total_price %>
                     <%= f.text_field :total_price, class:"form-control col-md-9 mb-4", :readonly => true %>
 
                     <p class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</p>

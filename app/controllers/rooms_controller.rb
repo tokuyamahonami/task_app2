@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
   def show
     @user = current_user
 		@room = Room.find(params[:id]) 
-		@reservation = Reservation.new(reservation_params)
+		@reservation = Reservation.new(params.permit(:room_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day))
   end
 
   # GET /rooms/new

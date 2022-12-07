@@ -9,7 +9,7 @@
                  <div class="row">
                     <%= f.label :name, "予約した部屋", class:"col-md-3" %><br>
                     <div class="col-md-9">
-                       <%= link_to '@reservation.room.name', {controller: 'reservations', action: 'new', id:@reservation.room_id} %>
+                       <%= link_to '@reservation.room.name', {controller: 'room', action: 'show', id:@reservation.room_id} %>
                     </div>
                  </div>
               </div>
