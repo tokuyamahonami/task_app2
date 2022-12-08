@@ -7,23 +7,32 @@ class ReservationsController < ApplicationController
 		@reservations = Reservation.all
 	end
 
+	def show
+		@reservation = Reservation.find(params[:id])
+		@room = Room.find(@reservation.room_id)
+	end
+
     def confirm
-		binding.pry
-		@reservation = Reservation.new(params.permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day))
-		@room = Room.find(params[:room_id])
+		@reservation = Reservation.new(reservation_params)
 		@user = current_user
-		binding.pry
+		if @reservation.valid?
+			@room = @reservation.room
+			@total_price = @reservation.room.single_rate * @reservation.people * (@reservation.end_date - @reservation.start_date).to_i
+			@total_day = (@reservation.end_date - @reservation.start_date).to_i
+		else
+			render "rooms/show"
+		end
 	end
 
     def create
-		@reservation = Reservation.new(params.permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day))
+		@reservation = Reservation.new(reservation_params)
 		if @reservation.save
 		   flash[:notice] = "予約が完了しました"
 		   redirect_to reservation_path(@reservation.id)
 		else
 		   @room = Room.find(params[:reservation][:room_id])
 		   @user = User.find(params[:reservation][:user_id])
-		   render :new
+		   render :complete
 		end
 	end
 
@@ -32,16 +41,9 @@ class ReservationsController < ApplicationController
 		@reservation = Reservation.find(params[:id])
 	end
 
-	def show
-		@reservation = Reservation.find(params[:id])
-		@room = Room.find(@reservation.room_id)
-	end
-
-
     private
 
 	def reservation_params
-		#binding.pry
 		params.require(:reservation).permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day)
 	end
 

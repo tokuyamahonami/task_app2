@@ -13,9 +13,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :reservations 
-
   post 'reservations/confirm'
+  post 'reservations/complete'
+
+  resources :reservations
+
+
 
 
 
