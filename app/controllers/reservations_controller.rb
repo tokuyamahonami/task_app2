@@ -2,14 +2,14 @@ class ReservationsController < ApplicationController
 
     #before_action :permit_params, except: :new
 
-	def index
-		@user = current_user
-		@reservations = Reservation.all
-	end
+	#def index
+		#@user = current_user
+		#@reservations = Reservation.all
+	#end
 
 	def show
-		@reservation = Reservation.find(params[:id])
-		@room = Room.find(@reservation.room_id)
+		@reservations = Reservation.all
+		
 	end
 
     def confirm
@@ -38,13 +38,14 @@ class ReservationsController < ApplicationController
 
 
     def complete
-		@reservation = Reservation.find(params[:id])
+		@reservation = Reservation.new(reservation_params)
+		@room = @reservation.room
 	end
 
     private
 
 	def reservation_params
-		params.require(:reservation).permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day)
+		params.require(:reservation).permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day, :name)
 	end
 
 end
