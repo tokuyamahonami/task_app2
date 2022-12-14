@@ -3,13 +3,14 @@
       <div class="col-md-12 user-view">
          <div class="user-view-box">
             
-            <%= form_with model: @reservation do |f| %>
+              <%=form_with model:@reservation do |f| %>
 
               <div class="update-content">
                  <div class="row">
                     <%= f.label :name, "予約した部屋", class:"col-md-3" %><br>
                     <div class="col-md-9">
-                       <%= link_to @reservation.room.name %>
+                       <%= f.hidden_field :room_id, :value => @room.room_id %>
+                       <%= link_to @room.name %>
                     </div>
                  </div>
               </div>
@@ -18,7 +19,7 @@
                  <div class="row">
                     <%= f.label :start_date, "開始日", class:"col-md-3" %><br>
                     <div class="col-md-9">
-                       <%= @reservation.start_date.strftime('%Y年%m月%d日') %>
+                       <%= @reservation.start_date.strftime('%Y-%m-%d') %>
                     </div>
                  </div>
               </div>
@@ -27,7 +28,7 @@
                  <div class="row">
                     <%= f.label :end_date, "終了日", class:"col-md-3" %><br>
                     <div class="col-md-9">
-                       <%= @reservation.end_date.strftime('%Y年%m月%d日') %>
+                       <%= @reservation.end_date.strftime('%Y-%m-%d') %>
                     </div>
                  </div>
               </div>
@@ -36,12 +37,12 @@
                  <div class="row">
                     <%= f.label :total_price, "価格", class:"col-md-3" %><br>
                     <div class="col-md-9">
-                       <h6><%= @reservation.room.single_rate * @reservation.people * (@reservation.end_date - @reservation.start_date).to_i %>円</h6>
+                       <h6><%= @reservation.total_price %>円</h6>
                     </div>
                  </div>
               </div>
 
-            <% end %>
+              <% end %>
 
          </div>
       </div>

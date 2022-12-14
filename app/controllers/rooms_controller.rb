@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
   def show
     @user = current_user
 		@room = Room.find(params[:id]) 
-		@reservation = Reservation.new(params.permit(:room_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day))
+		@reservation = Reservation.new(params.permit(:name, :introduction, :single_rate, :address, :picture, :user_id))
   end
 
   # GET /rooms/new
@@ -48,6 +48,6 @@ class RoomsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def room_params
-    params.require(:room).permit(:name, :introduction, :single_rate, :address, :picture, :user_id)
+    params.require(:room).permit(:name, :introduction, :single_rate, :address, :photo, :user_id)
   end
 end

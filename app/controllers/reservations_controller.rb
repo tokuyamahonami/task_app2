@@ -2,10 +2,10 @@ class ReservationsController < ApplicationController
 
     #before_action :permit_params, except: :new
 
-	#def index
-		#@user = current_user
-		#@reservations = Reservation.all
-	#end
+	def index
+		@user = current_user
+		@reservations = Reservation.all
+	end
 
 	def show
 		@reservations = Reservation.all
@@ -13,7 +13,8 @@ class ReservationsController < ApplicationController
 	end
 
     def confirm
-		@reservation = Reservation.new(reservation_params)
+		#binding.pry
+		@reservation = Reservation.new(params.require(:reservation).permit(:room_id, :user_id, :start_date, :end_date, :total_price, :people, :total_day, :name))
 		@user = current_user
 		if @reservation.valid?
 			@room = @reservation.room
@@ -24,28 +25,33 @@ class ReservationsController < ApplicationController
 		end
 	end
 
-    def create
-		@reservation = Reservation.new(reservation_params)
+    def complete #create
+		#binding.pry
+		@reservation = Reservation.new(params.require(:reservation).permit(:room_id, :user_id, :start_date, :end_date, :total_price, :people, :total_day, :name))
+		#@reservation.total_price = @reservation.room.single_rate * @reservation.people * (@reservation.end_date - @reservation.start_date).to_i
 		if @reservation.save
 		   flash[:notice] = "予約が完了しました"
-		   redirect_to reservation_path(@reservation.id)
+		   redirect_to reservation_path(@room.room_id)
 		else
-		   @room = Room.find(params[:reservation][:room_id])
-		   @user = User.find(params[:reservation][:user_id])
-		   render :complete
+		   @room = @reservation.room
+		   @room = Room.find(params[:room_id])
+		   @user = current_user #User.find(params[:reservation][:user_id])
 		end
 	end
 
 
-    def complete
-		@reservation = Reservation.new(reservation_params)
-		@room = @reservation.room
-	end
+    #def complete
+		#binding.pry
+		#@reservation = Reservation.new(reservation_params)
+		#@total_price = @reservation.room.single_rate * @reservation.people * (@reservation.end_date - @reservation.start_date).to_i
+		#@reservation = Reservation.find(params[:room_id])
+		#@room = Room.find(params[:room_id])
+	#end
 
     private
 
 	def reservation_params
-		params.require(:reservation).permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day, :name)
+		params.require(:reservation).permit(:room_id, :user_id, :start_date, :end_date, :single_rate, :total_price, :people, :total_day, :name, :picture)
 	end
 
 end
