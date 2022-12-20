@@ -6,7 +6,9 @@
                 <h5 class="price-icon"><%= @reservation.room.single_rate %> /日 </h5>
                 <div class="reservations-new-date-select">
 
-                    <%= form_with model: @reservation, url: reservations_complete_path do |f| %>
+                    <%= form_with model: @reservation, url: reservations_complete_path local: true do |f| %>
+                    <%= f.hidden_field :room_id, :value => @room.id %>
+                    <%= f.hidden_field :user_id, :value => @user.id %>
 
                     <%= f.label :start_date, "開始日" %><br>
                     <%= f.date_field :start_date, class:"form-control col-md-9 mb-4", :readonly => true %>
@@ -23,8 +25,6 @@
 
                     <p class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</p>
 
-                    <%= f.hidden_field :room_id, :value => @room_id %>
-                    <%= f.hidden_field :user_id, :value => @user_id %>
                     <%= f.submit "予約を確定", class:"col-md-2 btn btn-primary my-3 form-control form-btn"%>
                     <%= link_to "ルーム詳細に戻る", :back, class:"btn btn-secondary form-control" %>
 

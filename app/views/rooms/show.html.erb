@@ -1,9 +1,8 @@
 <div class="container room-show">
    <div class="row">
       <div class="col-md-8">
-            <% if @room.photo.attached? %>
-            <%= image_tag @room.photo, class: "room_image_detail" %>
-            <% end %>
+
+          <image src="<%= @room.picture %>" onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class= "room-show-image">
           <div class="room-show-detile mt-5">
              <div class="room-show-detile-icon">
                 <%=link_to root_path do %>

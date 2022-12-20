@@ -3,14 +3,13 @@
       <div class="col-md-12 user-view">
          <div class="user-view-box">
             
-              <%=form_with model:@reservation do |f| %>
+              <%= form_with model:@reservations do |f| %>
 
               <div class="update-content">
                  <div class="row">
                     <%= f.label :name, "予約した部屋", class:"col-md-3" %><br>
                     <div class="col-md-9">
-                       <%= f.hidden_field :room_id, :value => @room.room_id %>
-                       <%= link_to @room.name %>
+                       <%= @room.name %>
                     </div>
                  </div>
               </div>
@@ -19,7 +18,7 @@
                  <div class="row">
                     <%= f.label :start_date, "開始日", class:"col-md-3" %><br>
                     <div class="col-md-9">
-                       <%= @reservation.start_date.strftime('%Y-%m-%d') %>
+                       <%= @reservation.start_date %>
                     </div>
                  </div>
               </div>
@@ -28,7 +27,7 @@
                  <div class="row">
                     <%= f.label :end_date, "終了日", class:"col-md-3" %><br>
                     <div class="col-md-9">
-                       <%= @reservation.end_date.strftime('%Y-%m-%d') %>
+                       <%= @reservation.end_date %>
                     </div>
                  </div>
               </div>
