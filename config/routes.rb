@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     end
   end
 
+
+
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
@@ -13,11 +16,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  resources :reservations, only: [:index, :create] 
 
-  post 'reservations/confirm'
+  post 'reservations/confirm', to: 'reservations#confirm'
   post 'reservations/complete'
-
-  resources :reservations
 
 
   devise_scope :user do

@@ -30,7 +30,7 @@ class RoomsController < ApplicationController
   # POST /rooms or /rooms.json
   def create
     @user = current_user
-    @room = Room.create(room_params)
+    @room = Room.new(room_params)
       if @room.save
         redirect_to :rooms ,notice: "ルーム情報を新規登録しました"
       else
