@@ -33,6 +33,10 @@ body, p, ol, ul, td {
     line-height: 18px;
 }
 
+header {
+    display: block;
+}
+
 .header .nav-item {
     display: inline-block;
     color: #fff;
@@ -41,6 +45,10 @@ body, p, ol, ul, td {
 
 .header-left-nav {
     float: left;
+}
+
+.header-left-nav form {
+    display: inline-block;
 }
 
 .header-sharch {
@@ -109,6 +117,10 @@ body, p, ol, ul, td {
 .my-2 {
     margin-bottom: 0.5rem!important;
     margin-top: 0.5rem!important;
+}
+
+.p-1 {
+    padding: 0.25rem!important;
 }
 
 .btn-primary {

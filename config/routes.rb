@@ -19,7 +19,12 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index, :create] 
 
   post 'reservations/confirm', to: 'reservations#confirm'
-  post 'reservations/complete'
+  post 'reservations/:id', to: 'reservations#complete'
+  #get 'reservations/complete'
+
+
+
+  
 
 
   devise_scope :user do

@@ -1,33 +1,24 @@
 <div class="container room-show">
    <div class="row">
       <div class="col-md-8">
-          <!--<% if @room.picture.attached? %>
-           <%= image_tag @room.picture, class: "room-show-image" %>
-          <% end %>-->
-          <image src= "<%= @room.picture %>" onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="room-show-image">
+          <%= image_tag 'room2.png', class: "room-show-image" %>
           <div class="room-show-detile mt-5">
              <div class="room-show-detile-icon">
-                 <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon.jpg" class="host-icon">
+                 <img src="https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" class="host-icon">
              </div>
 
              <div class="room-show-profile ml-4">
-                <p class="room-show-profile-name">
-                   <%= @room.name %>
-                </p>
-                <p class="room-show-profile-address">
-                   <%= @room.address %>
-                </p>
+                <p class="room-show-profile-name"><%= @room.name %></p>
+                <p class="room-show-profile-address"><%= @room.address %></p>
              </div>
           </div>
 
-          <p class="room-show-detile-content">
-             <%= @room.introduction %>
-          </p>
+          <p class="room-show-detile-content"><%= @room.introduction %></p>
       </div>
 
       <div class="col-md-4">
           <div class="room-show-nav">
-              <%= form_with url: reservations_confirm_path, local: true do |f| %>
+              <%= form_with model:@reservation, url: reservations_confirm_path, local: true do |f| %>
               <h5 class="price-icon">¥<%= @room.single_rate %> / 日</h5>
 
                  <div class="room-show-date-select">
