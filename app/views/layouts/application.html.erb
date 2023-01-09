@@ -17,7 +17,7 @@
   <header class="header">
    <div class="header-inner">
     <div class="header-left-nav">
-      <%= link_to image_tag('https://rails-02-sample.herokuapp.com/assets/common/logo.png'), 'http://localhost:3000/' %>
+      <%= link_to image_tag('https://rails-02-sample.herokuapp.com/assets/common/logo.png', width: '221px'), 'http://localhost:3000/', class: 'logo' %>
          <div class="header-sharch d-lg-inline-block d-none">
            <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
               <%= f.search_field :address_cont, placeholder:"エリア", class: "form-control" %> 

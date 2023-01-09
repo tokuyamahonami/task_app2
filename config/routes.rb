@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index, :create] 
 
   post 'reservations/confirm', to: 'reservations#confirm'
-  post 'reservations/:id', to: 'reservations#complete'
+  post 'reservations/complete', to: 'reservations#complete'
   #get 'reservations/complete'
 
 

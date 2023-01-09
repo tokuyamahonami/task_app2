@@ -30,7 +30,7 @@
 
                 <div class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</div>
 
-                <%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
+                <%= form_with model: @reservation, url: reservations_complete_path, local: true do |f| %>
                   <%= f.hidden_field :room_id, :value => @room.id %>
                   <%= f.hidden_field :start_date %>
                   <%= f.hidden_field :end_date %>

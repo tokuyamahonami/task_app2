@@ -179,7 +179,11 @@ a {
 }
 
 .user .user-nav-pc {
-    height: 100vh;
+    height: 100%;
+}
+
+.user .user-nav-pc li {
+    display: inline-block;
 }
 
 .user .user-nav-mobile {
@@ -226,5 +230,7 @@ a {
     border-radius: 50px;
 }
 
-
+.logo {
+    width: 221px;
+}
 
