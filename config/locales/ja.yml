@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+
+    reservation:
+      start_date: "開始日"
+      end_date: "終了日"
+      number_of_people: "人数"
+

@@ -2,52 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.room-show-image .reservations-image {
-    width: 100%;
-    object-fit: cover;
-}
-
-.room-show-detile {
-    display: flex;
-    align-items: center;
-}
-
-.room-show-detile-icon {
-    padding: 10px;
-}
-
-.room-show-profile {
-    padding: 15px;
-}
-
-.room-show-profile-name {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px 0;
-}
-
-.room-show-profile-address {
-    font-size: 14px;
-}
-
-.room-show-detile-content {
-    font-size: 16px;
-    line-height: 30px;
-    padding: 30px 10px;
-    border-top: 1px solid #eaedef;
-    border-bottom: 1px solid #eaedef;
-    word-break: break-all;
-}
-
-.room-show-nav {
-    padding: 20px;
-    border: 1px solid #eaedef;
+.reservations-image {
+    width: 120px;
 }
 
 .h5, h5 {
     font-size: 1.25rem;
 }
 
-.room-show-date-select {
-    padding: 15px 0;
+.reservations-table {
+    width: 100%;
+    border-top: 1px solid #eaedef;
+    border-bottom: 1px solid #eaedef;
+    min-width: 800px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+table td {
+    word-break: break-word;
 }

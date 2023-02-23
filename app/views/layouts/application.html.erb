@@ -19,14 +19,14 @@
     <div class="header-left-nav">
       <%= link_to image_tag('https://rails-02-sample.herokuapp.com/assets/common/logo.png', width: '221px'), 'http://localhost:3000/', class: 'logo' %>
          <div class="header-sharch d-lg-inline-block d-none">
-           <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+           <%= search_form_for @q, url: search_rooms_path do |f| %>
               <%= f.search_field :address_cont, placeholder:"エリア", class: "form-control" %> 
               <i class="fas fa-map-marker-alt"></i>
            <% end %>
          </div>
 
          <div class="header-sharch d-lg-inline-block d-none">
-           <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+           <%= search_form_for @q, url: search_rooms_path do |f| %>
               <%= f.search_field :name_or_introduction_or_address_cont, placeholder:"キーワード", class: "form-control" %> 
               <i class="fas fa-search"></i>
            <% end %>

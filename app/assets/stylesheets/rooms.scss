@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.room-posts {
-    width: 100%;
-    padding: 30px 60px;
-}
-
 .pd-4 {
     padding-bottom: 1.5rem!important;
 }
@@ -15,34 +10,21 @@
     font-size: 1.5rem;
 }
 
-.room-posts table {
-    min-width: 800px;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-.room-posts table thead tr {
+.room-posts {
+    width: 100%;
+    padding: 30px 60px;
     border-top: 1px solid #eaedef;
     border-bottom: 1px solid #eaedef;
-}
-
-.room-posts table thead th {
+    min-width: 800px;
     padding: 8px 15px;
     font-size: 14px;
     letter-spacing: 1px;
-}
-
-.room-posts table tbody tr {
-    border-bottom: 1px solid #eaedef;
-}
-
-.room-posts table tbody td {
     padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.room-posts table tbody a {
+.room-posts a {
     color: #4a90e2;
     text-decoration: underline;
 }
@@ -53,14 +35,47 @@ table {
     object-fit: cover;
 }
 
-.room-posts table tbody .posts-name {
+.room-posts .posts-name {
     font-size: 18px;
     font-weight: bold;
     color: #909090;
 }
 
-.room-posts table tbody .posts-content {
+.room-posts .posts-content {
     max-width: 400px;
+}
+
+.room-register {
+    width: 100%;
+    border-top: 1px solid #eaedef;
+    border-bottom: 1px solid #eaedef;
+    min-width: 800px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
+.room-register-image {
+    width: 240px;
+    height: 140px;
+    object-fit: cover;
+}
+
+.room-register .register-text{
+    font-size: 18px;
+    font-weight: bold;
+    color: #909090;
+    max-width: 400px;
+    display: flex;
+    padding: 16px 0.5rem!important;
+}
+
+
+.room-box {
+    margin:0 50px 50px 0;
 }
 
 .room-show-image {
@@ -77,9 +92,39 @@ table {
     align-items: center;
 }
 
+.room-show-detile-icon {
+    padding: 10px;
+}
+
+.room-show-detile-content {
+    font-size: 16px;
+    line-height: 30px;
+    padding: 30px 10px;
+    border-top: 1px solid #eaedef;
+    border-bottom: 1px solid #eaedef;
+    word-break: break-all;
+}
+
 .room-show-profile-name {
     font-size: 18px;
     font-weight: bold;
+    padding: 15px 0;
+}
+
+.room-show-profile {
+    padding: 15px;
+}
+
+.room-show-profile-address {
+    font-size: 14px;
+}
+
+.room-show-nav {
+    padding: 20px;
+    border: 1px solid #eaedef;
+}
+
+.room-show-date-select {
     padding: 15px 0;
 }
 
@@ -145,3 +190,22 @@ table {
 .room-new .update-content label {
     font-weight: bold;
 }
+
+.room-image {
+    aspect-ratio: 16/9;
+    border-radius: 26px 26px 0 0;
+    object-fit: cover;
+    width: 100%;
+}
+
+.room {
+    margin-bottom: 260px;
+    padding-top: 40px;
+}
+
+.pd-4{
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 24px;
+}
+

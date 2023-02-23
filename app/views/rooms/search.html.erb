@@ -1,29 +1,13 @@
 <div class="container-fluid room">
   <h4 class="pb-4">検索結果:<%= @results.count %>件</h4>
-  <table>
-     <thead>
-       <tr algin="center">
-         <th>ルーム画像</th>
-         <th>ルーム名</th>
-         <th>ルーム紹介</th>
-         <th>料金</th>
-         <th>作成日</th>
-       </tr>
-     </thead>
-
-     <tbody>
-       <% if @rooms.present? %>
-         <% @rooms.each do |room| %>
-           <tr>
-              <td><image src="<%= room.picture %>" onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="reservations-image"></td>
-              <td class="posts-name"><%= link_to room.name, {controller: 'reservations', action: 'new', id: room.id} %></td>
-              <td class="posts-content"><%= room.address %></td>
-              <td class="price-icon"><%= room.single_rate %></td>
-           </tr>
+      <div class="room-posts">
+         <% @results.each do |room| %>
+           <div class="room-box">
+              <p><image src="<%= room.picture %>" onerror= "this.src='https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png';" class="room-posts-image"></p>
+              <p class="posts-name"><%= link_to room.name, {controller: 'reservations', action: 'new', id: room.id} %></p>
+              <p class="posts-content"><%= room.address %></p>
+              <p class="price-icon"><%= room.single_rate %></p>
+           </div>
          <% end %>
-        <% else %>
-          <p>検索結果はありません</p>
-        <% end %>
-     </tbody>
-  </table>
+      </div>
 </div>

@@ -16,10 +16,28 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :reservations, only: [:index, :create] 
 
   post 'reservations/confirm', to: 'reservations#confirm'
-  post 'reservations/complete', to: 'reservations#complete'
+  #post 'reservations', to: 'reservations#create'
+  get 'reservations', to: 'reservations#index'
+
+
+  resources :reservations #do
+     #collection do
+      #get 'index'
+      #post 'index'
+     #end
+     #member do
+      #post 'confirm', to: 'reservations#confirm'
+      #post 'create'
+      #get 'index'
+     #end
+  #end
+
+  #post 'reservations/confirm', to: 'reservations#confirm'
+  #post 'reservations', to: 'reservations#create'
+  #get 'reservations', to: 'reservations#index'
+  #post 'reservations/complete/:id', to: 'reservations#complete'
   #get 'reservations/complete'
 
 

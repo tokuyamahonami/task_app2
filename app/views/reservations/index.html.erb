@@ -1,6 +1,7 @@
 <div class="container-fiuld reservations">
    <h4 class="pb-4">予約済みルーム一覧</h4>
-   <table>
+   <div class="reservations-table">
+    <table class="align-middle">
       <thead>
          <tr algin="center">
             <th>ルーム画像</th>
@@ -13,17 +14,17 @@
          </tr>
       </thead>
       <tbody>
-         <% @reservations.each do |reservation| %>
-           <tr>
-             <td><image src=" <%= @reservation.room.photo %> " onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="reservations-image"></td>
-             <td class="posts-name"><%= link_to "#{@reservation.room.name}" %></td>
-             <td class="posts-content"><%= @reservation.room.introducution %></td>
-             <td class="prv¥ice-icon"><%= @reservation.total_price %></td>
-             <td><%= @reservation.start_date.strftime('%Y-%m-%d') %></td>
-             <td><%= @reservation.end_date.strftime('%Y-%m-%d') %></td>
-             <td><%= @reservation.created_at.strftime('%Y-%m-%d') %></td>
-           </tr>
-         <% end %>
+        <% @reservations.each do |reservation| %>
+          <tr>
+           <td><image src=" <%= reservation.room.picture %> " onerror= "this.src='https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png';" class="reservations-image"></td>
+           <td><%= reservation.room.name %></td>
+           <td><%= reservation.room.introduction %></td>
+           <td><%= reservation.room.single_rate * reservation.people * (reservation.end_date - reservation.start_date).to_i %></td>
+           <td><%= reservation.start_date %></td>
+           <td><%= reservation.end_date %></td>
+           <td><%= reservation.created_at.strftime('%Y-%m-%d') %></td>
+          </tr>
+        <% end %>
       </tbody>
-   </table>
+    </table>
 </div>
