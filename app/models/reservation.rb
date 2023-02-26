@@ -1,6 +1,5 @@
 class Reservation < ApplicationRecord
 
-    has_one_attached :picture
     belongs_to :room, optional: true
     belongs_to :user
 
