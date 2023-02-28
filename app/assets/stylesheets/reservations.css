@@ -1,0 +1,30 @@
+.reservations-image {
+  width: 120px;
+}
+
+.h5, h5 {
+  font-size: 1.25rem;
+}
+
+.reservations-table {
+  width: 100%;
+  border-top: 1px solid #eaedef;
+  border-bottom: 1px solid #eaedef;
+  min-width: 800px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+table td {
+  word-break: break-word;
+}
+/*# sourceMappingURL=reservations.css.map */

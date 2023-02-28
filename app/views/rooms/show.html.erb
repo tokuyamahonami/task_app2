@@ -2,7 +2,11 @@
   <%= render "devise/shared/error_messages", obj: @reservation %>
    <div class="row">
       <div class="col-md-8">
-          <%= image_tag 'room2.png', class: "room-show-image" %>
+          <% if @room.picture.attached? %>
+            <%= image_tag @room.picture,class:"room-show-image"%> 
+          <% else %>
+            <%= image_tag 'room2.png', class: "room-show-image" %>
+          <% end %>
           <div class="room-show-detile mt-5">
              <div class="room-show-detile-icon">
                  <img src="https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" class="host-icon">

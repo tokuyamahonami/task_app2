@@ -26,7 +26,6 @@ class RoomsController < ApplicationController
   def create
     @user = current_user
     @room = Room.new(room_params)
-    @room.picture.attach(params[:room][:picture])
       if @room.save
         redirect_to :rooms ,notice: "ルーム情報を新規登録しました"
       else
