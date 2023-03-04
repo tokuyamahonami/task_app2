@@ -18,31 +18,10 @@ Rails.application.routes.draw do
 
 
   post 'reservations/confirm', to: 'reservations#confirm'
-  #post 'reservations', to: 'reservations#create'
   get 'reservations', to: 'reservations#index'
 
 
-  resources :reservations #do
-     #collection do
-      #get 'index'
-      #post 'index'
-     #end
-     #member do
-      #post 'confirm', to: 'reservations#confirm'
-      #post 'create'
-      #get 'index'
-     #end
-  #end
-
-  #post 'reservations/confirm', to: 'reservations#confirm'
-  #post 'reservations', to: 'reservations#create'
-  #get 'reservations', to: 'reservations#index'
-  #post 'reservations/complete/:id', to: 'reservations#complete'
-  #get 'reservations/complete'
-
-
-
-  
+  resources :reservations 
 
 
   devise_scope :user do
