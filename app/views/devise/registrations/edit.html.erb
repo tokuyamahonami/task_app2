@@ -8,12 +8,11 @@
         <div class="form-group">
           <%= f.label :メールアドレス %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
         </div>
       </div>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
 
       <div class="field">
         <div class="form-group">

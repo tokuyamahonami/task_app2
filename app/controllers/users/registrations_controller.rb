@@ -15,9 +15,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   #def edit
+    #@user = current_user
+    #if @user.update(params.permit(:name, :introduction, :image))
+      #flash[:notice] = "Profile was successfully updated."
+      #redirect_to users_show_path
+    #else
+      #render :edit
+    #end
+   #end
 
   # PUT /resource
   # def update
@@ -52,7 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
    def after_sign_up_path_for(resource)
-    user_path(current_user.id)
+    users_show_path(current_user.id)
    end
 
   # The path used after sign up for inactive accounts.

@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
 
-  resources :users, only: [:show]
+
+  get 'users/profile', to: 'users#profile'
+  get 'users/profile/edit'#, to: 'users/profile#edit'
+  get 'users/show'
+  #resources :users, only: [:show, :profile]
 
 
   post 'reservations/confirm', to: 'reservations#confirm'
@@ -29,7 +33,6 @@ Rails.application.routes.draw do
   end
   
 
-  get 'users/show'
   root 'plans#index'
 
 end
