@@ -5,19 +5,23 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def profile_edit
-    @user = User.find(params[:id])
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(params.permit(:name, :introduction, :image))
+      flash[:notice] = "Profile was successfully updated."
+      redirect_to users_profile_path
+    else
+      render :edit
+    end
   end
 
   def profile
     @user = current_user
-    @user = User.new(user_params)
-    if @user.update(params.permit(:name, :introduction, :image))
-      flash[:notice] = "Profile was successfully updated."
-      redirect_to users_edit_path
-    #else
-      #render :edit
-    end
+    @user = User.new
   end
 
   private

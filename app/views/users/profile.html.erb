@@ -15,13 +15,13 @@
    <h3>プロフィール</h3>
    <div class="user-view-box">
       
-    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+    <%= form_with model: @user, local: true do |f| %>
 
 
       <div class="field">
         <div class="form-group">
           <%= f.label :ユーザー名 %><br />
-         <div class="col-md-9"><%= @user.name %></div>
+          <div class="col-md-9"><%= @user.name %></div>
         </div>
       </div>
 
