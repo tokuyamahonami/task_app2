@@ -19,8 +19,7 @@ Rails.application.routes.draw do
   post 'users/profile', to: 'users#profile'
   get 'users/profile/edit', to: 'users#edit'
   get 'users/show'
-  resources :users#, only: [:show, :profile]
-
+  resources :users
 
   post 'reservations/confirm', to: 'reservations#confirm'
   get 'reservations', to: 'reservations#index'
