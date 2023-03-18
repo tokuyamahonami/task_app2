@@ -1,0 +1,46 @@
+<div class="container reservations-new">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="reservations-new-nav">
+         <h4 class="reservations-new-check-content">予約内容確認</h4>
+            <h5 class="price-icon">¥<%= @room.single_rate %> /日 </h5>
+              <div class="reservations-new-date-select">
+                <span>開始日</span>
+                 <div class="form-control col-md-9 mb-4">
+                   <td><%= @reservation.start_date %></td>
+                 </div>
+
+                <span>終了日</span>
+                 <div class="form-control col-md-9 mb-4">
+                   <td><%= @reservation.end_date %></td>
+                 </div>
+
+                <div class="reservations-new-check-content">
+                  <td>使用日数 : <%= (@reservation.end_date - @reservation.start_date).to_i %>日</td>
+                </div>
+                
+                <div class ="reservations-new-check-content">
+                  <td>人数 : <%= @reservation.people %>人</td>
+                </div>
+
+                <span>合計金額</span>
+                <div class="form-control col-md-9 mb-4">
+                  <td><%= @reservation.room.single_rate * @reservation.people * (@reservation.end_date - @reservation.start_date).to_i %></td>
+                </div>
+
+                <div class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</div>
+
+                <%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
+                  <%= f.hidden_field :room_id, value: @room.id %>
+                  <%= f.hidden_field :user_id %>
+                  <%= f.hidden_field :start_date %>
+                  <%= f.hidden_field :end_date %>
+                  <%= f.hidden_field :people %>
+                  <%= f.submit "予約を確定", class:"btn btn-primary form-control form-btn"%>
+                  <%= link_to "ルーム詳細に戻る", :back, class:"btn btn-secondary form-control" %>
+                <% end %>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>

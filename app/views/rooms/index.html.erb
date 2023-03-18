@@ -1,0 +1,39 @@
+<div class="container-fiuld room-posts">
+  <h4 class="pb-4">登録済みルーム一覧</h4>
+  <div class="room-register">
+    <table>
+       <thead>
+          <tr algin="center">
+              <th>ルーム画像</th>
+              <th>ルーム名</th>
+              <th>ルーム紹介</th>
+              <th>料金</th>
+              <th>作成日</th>
+          </tr>
+       </thead>
+       <tbody>
+           <% @rooms.each do |room| %>
+              <tr>
+                 <td>
+                     <% if room.picture.attached? %>
+                       <%= image_tag room.picture,class:"room-register-image"%> 
+                     <% else %>
+                       <%= image_tag 'room2.png', class: "room-register-image" %>
+                     <% end %>
+                  </td>
+                 <td class="register-text"><%= link_to room.name, {controller: 'rooms', action: 'show', id: room.id} %></td>
+                 <td><%= room.introduction %></td>
+                 <td><%= room.single_rate %></td>
+                 <td><%= room.created_at.strftime('%Y/%m/%d %H:%M:%S')  %></td>
+              </tr>
+           <% end %>
+       </tbody>
+    </table>
+  </div> 
+</div>
+
+
+
+
+
+ 

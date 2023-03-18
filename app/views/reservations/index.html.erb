@@ -1,0 +1,36 @@
+<div class="container-fiuld reservations">
+   <h4 class="pb-4">予約済みルーム一覧</h4>
+   <div class="reservations-table">
+    <table class="align-middle">
+      <thead>
+         <tr algin="center">
+            <th>ルーム画像</th>
+            <th>ルーム名</th>
+            <th>ルーム紹介</th>
+            <th>合計金額</th>
+            <th>開始日</th>
+            <th>終了日</th>
+            <th>予約確定日時</th>
+         </tr>
+      </thead>
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <tr>
+           <td>
+               <% if reservation.room.picture.attached? %>
+                  <%= image_tag reservation.room.picture,class:"reservations-image"%> 
+               <% else %>
+                  <%= image_tag 'room2.png', class: "reservations-image" %>
+               <% end %>
+           </td>
+           <td><%= reservation.room.name %></td>
+           <td><%= reservation.room.introduction %></td>
+           <td><%= reservation.room.single_rate * reservation.people * (reservation.end_date - reservation.start_date).to_i %></td>
+           <td><%= reservation.start_date %></td>
+           <td><%= reservation.end_date %></td>
+           <td><%= reservation.created_at.strftime('%Y-%m-%d') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

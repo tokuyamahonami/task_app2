@@ -1,0 +1,27 @@
+// Place all the styles related to the reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.reservations-image {
+    width: 120px;
+}
+
+.h5, h5 {
+    font-size: 1.25rem;
+}
+
+.reservations-table {
+    width: 100%;
+    border-top: 1px solid #eaedef;
+    border-bottom: 1px solid #eaedef;
+    min-width: 800px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+table td {
+    word-break: break-word;
+}

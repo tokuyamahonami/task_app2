@@ -1,0 +1,19 @@
+<div class="container-fluid room">
+  <h4 class="pb-4">検索結果:<%= @results.count %>件</h4>
+      <div class="room-posts">
+         <% @results.each do |room| %>
+           <div class="room-box">
+              <p>
+                <% if room.picture.attached? %>
+                  <%= image_tag room.picture,class:"room-posts-image"%> 
+                <% else %>
+                  <%= image_tag 'room2.png', class: "room-posts-image" %>
+                <% end %>
+              </p>
+              <p class="posts-name"><%= link_to room.name, {controller: 'reservations', action: 'new', id: room.id} %></p>
+              <p class="posts-content"><%= room.address %></p>
+              <p class="price-icon"><%= room.single_rate %></p>
+           </div>
+         <% end %>
+      </div>
+</div>

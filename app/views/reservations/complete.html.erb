@@ -1,0 +1,43 @@
+<div class="container-fiuld user">
+   <div class="row">
+      <div class="col-md-12 user-view">
+         <div class="user-view-box">
+            
+              <div class="update-content">
+                 <div class="row col-md-3">
+                    <span>予約した部屋</span>
+                    <div class="col-md-9"><%= @room.name %></div>
+                 </div>
+              </div>
+
+              <div class="update-content">
+                 <div class="row col-md-3">
+                    開始日<br>
+                    <div class="col-md-9"><%= @reservation.start_date %></div>
+                 </div>
+              </div>
+
+              <div class="update-content">
+                 <div class="row col-md-3">
+                    終了日<br>
+                    <div class="col-md-9"><%= @reservation.end_date %></div>
+                 </div>
+              </div>
+
+              <div class="update-content">
+                 <div class="row col-md-3">
+                    価格<br>
+                    <div class="col-md-9"><%= @room.single_rate * @reservation.people * (@reservation.end_date - @reservation.start_date).to_i %>円</div>
+                 </div>
+              </div>
+
+              <%= form_with model: @reservation, local: true do |f| %>
+                  <%= f.hidden_field :room_id, :value => @room.id %>
+                  <%= f.hidden_field :start_date %>
+                  <%= f.hidden_field :end_date %>
+              <% end %>
+
+         </div>
+      </div>
+   </div>
+</div>

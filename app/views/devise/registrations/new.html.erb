@@ -1,0 +1,40 @@
+<div class="container device">
+  <div class="device_frame">
+   <p class="my-4">新規アカウント登録</p>
+    <div class="device_innner">
+        <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+        <%= render "devise/shared/links", resource: resource %>
+
+        <div class="field form-row">
+          <div class="col-2 required-b pt-2"></div>
+          <%= f.text_field :name, autofocus: true, class:"form-control col-10 px-2",placeholder:"ユーザー名" %>
+        </div>
+
+        <div class="field form-row">
+           <div class="col-2 required-b pt-2"></div>
+           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control col-10 px-2",placeholder:"メールアドレス" %>
+        </div>
+
+       <div class="field form-row">
+          <div class="col-2 required-b pt-2"></div>
+          <% if @minimum_password_length %>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control col-10 px-2",placeholder:"パスワード" %>
+       </div>
+
+       <div class="field form-row">
+         <div class="col-2 required-b pt-2"></div>
+         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control col-10 px-2",placeholder:"パスワード確認" %>
+       </div>
+
+       <div class="actions">
+         <%= f.submit "新しいアカウント作成", class: "link form-control btn btn-primary my-4"%>
+       </div>
+       <% end %>
+
+       <%= render "devise/shared/links" %>
+
+     </div>
+  </div>
+</div>
+
