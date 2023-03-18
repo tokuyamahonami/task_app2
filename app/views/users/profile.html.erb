@@ -17,20 +17,21 @@
       
     <%= form_with model: @user, local: true do |f| %>
 
-
+     <div class="update-content">
       <div class="field">
-        <div class="form-group">
-          <%= f.label :ユーザー名 %><br />
+        <div class="form-group user-name">
+          <%= f.label :name, "ユーザー名" %><br />
           <div class="col-md-9"><%= @user.name %></div>
         </div>
       </div>
+     </div>
 
       <div class="update-content">
         <div class="col-md-6">
          <div class="row">
           <div class="icon-box">
            <div class="col-md-9">
-            <label class="col-md-3" for="name">プロフィール画像</label>
+            <label class="profile-image" for="name">プロフィール画像</label><br />
              <% if @user.image.attached? %>
               <%= image_tag @user.image,class:"icon-image host-icon"%> 
              <% else %>
@@ -43,7 +44,7 @@
       </div>
 
       <div class="update-content">
-        <div class="row">
+        <div class="row user-introduction">
           <%= f.label :introduction, "自己紹介" %><br />
           <div class="col-md-9"><%= @user.introduction %></div>
         </div>

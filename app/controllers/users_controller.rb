@@ -10,9 +10,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    #binding.pry
     @user = current_user
-    if @user.update(params.permit(:name, :introduction, :image))
+    #binding.pry
+    if @user.update(params.require(:user).permit(:name, :introduction, :image))
       flash[:notice] = "ユーザーの情報を更新しました"
       redirect_to users_profile_path
     else
